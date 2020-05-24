@@ -350,8 +350,9 @@ public extension Date {
     }
     
     /// Return a new Date object with the new hour, minute and seconds values.
-    func adjust(hour: Int?, minute: Int?, second: Int?, day: Int? = nil, month: Int? = nil) -> Date {
+    func adjust(hour: Int?, minute: Int?, second: Int?, day: Int? = nil, month: Int? = nil, year: Int? = nil) -> Date {
         var comp = Date.components(self)
+        comp.year = year ?? comp.year
         comp.month = month ?? comp.month
         comp.day = day ?? comp.day
         comp.hour = hour ?? comp.hour
@@ -371,13 +372,19 @@ public extension Date {
         case .startOfWeek:
             return calendar.date(from: calendar.dateComponents([.yearForWeekOfYear, .weekOfYear], from: self))!
         case .endOfWeek:
-            let offset = 7 - component(.weekday)!
-            return adjust(.day, offset: offset)
+            return self.dateFor(.startOfWeek, calendar: calendar)
+                .adjust(.day, offset: 7)
+                .adjust(.second, offset: -1)
         case .startOfMonth:
             return adjust(hour: 0, minute: 0, second: 0, day: 1)
         case .endOfMonth:
             let month = (component(.month) ?? 0) + 1
             return adjust(hour: 0, minute: 0, second: 0, day: 0, month: month)
+        case .startOfYear:
+            return adjust(hour: 0, minute: 0, second: 0, day: 1, month: 1)
+        case .endOfYear:
+            let year = (component(.year) ?? 0) + 1
+            return adjust(hour: 0, minute: 0, second: 0, day: 1, month: 1, year:year).adjust(.second, offset: -1)
         case .tomorrow:
             return adjust(.day, offset:1)
         case .yesterday:
@@ -764,7 +771,8 @@ public enum DateComponentType {
 
 // The type of date that can be used for the dateFor function.
 public enum DateForType {
-    case startOfDay, endOfDay, startOfWeek, endOfWeek, startOfMonth, endOfMonth, tomorrow, yesterday, nearestMinute(minute:Int), nearestHour(hour:Int)
+    case startOfDay, endOfDay, startOfWeek, endOfWeek, startOfMonth, endOfMonth, startOfYear, endOfYear,
+    tomorrow, yesterday, nearestMinute(minute:Int), nearestHour(hour:Int)
 }
 
 // Convenience types for date to string conversion
