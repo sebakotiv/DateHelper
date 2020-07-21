@@ -368,7 +368,7 @@ public extension Date {
         case .startOfDay:
             return adjust(hour: 0, minute: 0, second: 0)
         case .endOfDay:
-            return adjust(hour: 23, minute: 59, second: 59)
+            return adjust(hour: 23, minute: 59, second: 59) + 1
         case .startOfWeek:
             return calendar.date(from: calendar.dateComponents([.yearForWeekOfYear, .weekOfYear], from: self))!
         case .endOfWeek:
