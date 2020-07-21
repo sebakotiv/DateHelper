@@ -1,11 +1,11 @@
 Pod::Spec.new do |s|
-  s.name             = "AFDateHelper"
-  s.version          = "4.3.1"
+  s.name             = "DateHelper"
+  s.version          = "4.3.2"
   s.summary          = "Date Extension for Swift 5"
   s.description      = <<-DESC
                        A Swift Date extension for creating, modifying and comparing dates.
                        DESC
-  s.homepage         = "https://github.com/melvitax/DateHelper"
+  s.homepage         = "https://github.com/sebakotiv/DateHelper"
   s.screenshots      = "https://raw.githubusercontent.com/melvitax/DateHelper/master/logo.png"
   s.license          = 'MIT'
   s.author           = { "Melvin Rivera" => "melvitax@me.com" }
@@ -19,7 +19,7 @@ Pod::Spec.new do |s|
   s.osx.deployment_target = "10.11"
 
   # ――― Source Location ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
-  s.source           = { :git => "https://github.com/melvitax/DateHelper.git", :tag => s.version.to_s }
+  s.source           = { :git => "https://github.com/sebakotiv/DateHelper.git", :tag => s.version.to_s }
 
   # ――― Source Code ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
   s.source_files = "Sources/**/*.swift"
@@ -27,5 +27,4 @@ Pod::Spec.new do |s|
   # ――― Project Settings ――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
   s.requires_arc = true
   s.pod_target_xcconfig  = { 'SWIFT_VERSION' => '5.0' }
-
 end
