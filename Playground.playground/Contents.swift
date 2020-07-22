@@ -1,6 +1,6 @@
 //: Playground - noun: a place where people can play
 
-import UIKit
+import Foundation
 import DateHelper
 
 let now = Date()
@@ -212,11 +212,12 @@ now.dateFor(.startOfWeek, calendar: calendar)
 now.dateFor(.endOfWeek)
 now.dateFor(.startOfMonth)
 now.dateFor(.endOfMonth)
+now.dateFor(.startOfYear)
+now.dateFor(.endOfYear)
 now.dateFor(.tomorrow)
 now.dateFor(.yesterday)
 now.dateFor(.nearestMinute(minute:30))
 now.dateFor(.nearestHour(hour:2))
-
 
 
 /***********************

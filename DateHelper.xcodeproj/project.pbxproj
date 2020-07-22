@@ -15,6 +15,7 @@
 		65E6A7D51D8B4C76000FAA78 /* DateHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65E6A7CE1D8B4959000FAA78 /* DateHelper.swift */; };
 		65E6A7D61D8B4C76000FAA78 /* DateHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65E6A7CE1D8B4959000FAA78 /* DateHelper.swift */; };
 		65E6A7D71D8B4C77000FAA78 /* DateHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65E6A7CE1D8B4959000FAA78 /* DateHelper.swift */; };
+		BB4B7EF324C7F64500B9FC5A /* DateHelper.framework in Sources */ = {isa = PBXBuildFile; fileRef = 65E6A7871D8B46AD000FAA78 /* DateHelper.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -307,6 +308,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BB4B7EF324C7F64500B9FC5A /* DateHelper.framework in Sources */,
 				65E6A7D71D8B4C77000FAA78 /* DateHelper.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

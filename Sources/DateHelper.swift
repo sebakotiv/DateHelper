@@ -368,23 +368,22 @@ public extension Date {
         case .startOfDay:
             return adjust(hour: 0, minute: 0, second: 0)
         case .endOfDay:
-            return adjust(hour: 23, minute: 59, second: 59) + 1
+            return dateFor(.startOfDay, calendar: calendar).adjust(.day, offset: 1)
         case .startOfWeek:
             return calendar.date(from: calendar.dateComponents([.yearForWeekOfYear, .weekOfYear], from: self))!
         case .endOfWeek:
-            return self.dateFor(.startOfWeek, calendar: calendar)
+            return dateFor(.startOfWeek, calendar: calendar)
                 .adjust(.day, offset: 7)
-                .adjust(.second, offset: -1)
         case .startOfMonth:
             return adjust(hour: 0, minute: 0, second: 0, day: 1)
         case .endOfMonth:
             let month = (component(.month) ?? 0) + 1
-            return adjust(hour: 0, minute: 0, second: 0, day: 0, month: month)
+            return adjust(hour: 0, minute: 0, second: 0, day: 1, month: month)
         case .startOfYear:
             return adjust(hour: 0, minute: 0, second: 0, day: 1, month: 1)
         case .endOfYear:
             let year = (component(.year) ?? 0) + 1
-            return adjust(hour: 0, minute: 0, second: 0, day: 1, month: 1, year:year).adjust(.second, offset: -1)
+            return adjust(hour: 0, minute: 0, second: 0, day: 1, month: 1, year: year)
         case .tomorrow:
             return adjust(.day, offset:1)
         case .yesterday:
