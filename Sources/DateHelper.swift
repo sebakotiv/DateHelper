@@ -583,11 +583,11 @@ public extension Date {
     private static var cachedDateFormatters = concurrentFormatterCache()
     
     // MARK: Intervals In Seconds
-    static let minuteInSeconds: TimeInterval = 60
-    static let hourInSeconds: TimeInterval = 3600
-    static let dayInSeconds: TimeInterval = 86400
-    static let weekInSeconds: TimeInterval = 604800
-    static let yearInSeconds: TimeInterval = 31556926
+    internal static let minuteInSeconds:Double = 60
+    internal static let hourInSeconds:Double = 3600
+    internal static let dayInSeconds:Double = 86400
+    internal static let weekInSeconds:Double = 604800
+    internal static let yearInSeconds:Double = 31556926
     
 }
 
