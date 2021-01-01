@@ -363,36 +363,44 @@ public extension Date {
     
     // MARK: Date for...
     
-    func dateFor(_ type:DateForType, calendar:Calendar = Calendar.current) -> Date {
+    func dateFor(_ type: DateForType, calendar: Calendar = Calendar.current) -> Date {
         switch type {
         case .startOfDay:
             return adjust(hour: 0, minute: 0, second: 0)
+            
         case .endOfDay:
             return dateFor(.startOfDay, calendar: calendar).adjust(.day, offset: 1)
+            
         case .startOfWeek:
             return calendar.date(from: calendar.dateComponents([.yearForWeekOfYear, .weekOfYear], from: self))!
+            
         case .endOfWeek:
-            return dateFor(.startOfWeek, calendar: calendar)
-                .adjust(.day, offset: 7)
+            return dateFor(.startOfWeek, calendar: calendar).adjust(.day, offset: 7)
+            
         case .startOfMonth:
             return adjust(hour: 0, minute: 0, second: 0, day: 1)
+            
         case .endOfMonth:
-            let month = (component(.month) ?? 0) + 1
-            return adjust(hour: 0, minute: 0, second: 0, day: 1, month: month)
+            return dateFor(.startOfMonth, calendar: calendar).adjust(.month, offset: 1)
+            
         case .startOfYear:
             return adjust(hour: 0, minute: 0, second: 0, day: 1, month: 1)
+            
         case .endOfYear:
-            let year = (component(.year) ?? 0) + 1
-            return adjust(hour: 0, minute: 0, second: 0, day: 1, month: 1, year: year)
+            return dateFor(.startOfYear, calendar: calendar).adjust(.year, offset: 1)
+            
         case .tomorrow:
-            return adjust(.day, offset:1)
+            return adjust(.day, offset: 1)
+            
         case .yesterday:
-            return adjust(.day, offset:-1)
+            return adjust(.day, offset: -1)
+            
         case .nearestMinute(let nearest):
-            let minutes = (component(.minute)! + nearest/2) / nearest * nearest
+            let minutes = ((component(.minute) ?? 0) + nearest / 2) / nearest * nearest
             return adjust(hour: nil, minute: minutes, second: nil)
+            
         case .nearestHour(let nearest):
-            let hours = (component(.hour)! + nearest/2) / nearest * nearest
+            let hours = ((component(.hour) ?? 0) + nearest / 2) / nearest * nearest
             return adjust(hour: hours, minute: 0, second: nil)
         }
     }
